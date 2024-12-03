@@ -44,6 +44,10 @@ class Produit
     #[ORM\Column]
     private ?\DateTimeImmutable $date_creation = null;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +97,18 @@ class Produit
     public function setDateCreation(\DateTimeImmutable $date_creation): static
     {
         $this->date_creation = $date_creation;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
