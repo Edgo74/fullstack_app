@@ -11,6 +11,7 @@ use ApiPlatform\Metadata\Get;
 use App\Repository\ProduitRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 #[ApiResource(
@@ -33,19 +34,29 @@ class Produit
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le nom du produit est obligatoire')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom du produit ne doit pas dépasser 255 caractères'
+    )]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: 'Le prix est obligatoire.')]
+    #[Assert\Positive(message: 'Le prix doit être un nombre positif.')]
     private ?int $prix = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: 'La date de création est obligatoire.')]
+    #[Assert\Type(\DateTimeInterface::class, message: 'La date doit être valide.')]
     private ?\DateTimeImmutable $date_creation = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull(message: 'La catégorie est obligatoire.')]
     private ?Categorie $categorie = null;
 
     public function getId(): ?int
