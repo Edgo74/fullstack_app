@@ -54,8 +54,8 @@ class Produit
     #[Assert\Type(\DateTimeInterface::class, message: 'La date doit être valide.')]
     private ?\DateTimeImmutable $date_creation = null;
 
-    #[ORM\ManyToOne(inversedBy: 'produits')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(inversedBy: 'produits', cascade: ['persist', 'merge'])]
+    #[ORM\JoinColumn(nullable: false, onDelete: "CASCADE")]
     #[Assert\NotNull(message: 'La catégorie est obligatoire.')]
     private ?Categorie $categorie = null;
 
