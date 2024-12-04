@@ -23,3 +23,4 @@ Ce projet est une application fullstack composée d'un backend en Symfony et d'u
     npm install
 3. **Lancez le serveur de développement :** :
     npm run dev
+    Ouvrez le projet dans votre navigateur : Allez sur http://localhost:5173/ pour voir l'application frontend en action.
