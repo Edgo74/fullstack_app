@@ -13,7 +13,7 @@ Ce projet est une application fullstack composée d'un backend en Symfony et d'u
 2. **Installez les dépendances avec Composer :** :
     composer install
 3. **Lancez le serveur Symfony en mode détaché :** :
-   composer install
+   symfony serve -d 
 
 ### Frontend
 
