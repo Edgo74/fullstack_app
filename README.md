@@ -13,8 +13,12 @@ Ce projet est une application fullstack composée d'un backend en Symfony et d'u
 2. **Installez les dépendances avec Composer :** 
     composer install
 3. **Lancez les conteneurs Docker pour la base de données :** 
-   docker compose up -d  
-3. **Lancez le serveur Symfony en mode détaché  :** 
+   docker compose up -d
+4. **Créer l abase de données: ** 
+   symfony console doctrine:database:create --if-not-exists
+   symfony console doctrine:migrations:migrate
+   symfony console doctrine:fixtures:load
+5. **Lancez le serveur Symfony en mode détaché  :** 
    symfony serve -d 
 
 ### Frontend
