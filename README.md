@@ -14,7 +14,7 @@ Ce projet est une application fullstack composée d'un backend en Symfony et d'u
     composer install
 3. **Lancez les conteneurs Docker pour la base de données :** 
    docker compose up -d
-4. **Créer l abase de données: ** 
+4. **Créer l abase de données:** 
    symfony console doctrine:database:create --if-not-exists
    symfony console doctrine:migrations:migrate
    symfony console doctrine:fixtures:load
